@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow rounded-4">
+        <div class="card-body">
+          <h2 class="text-center mb-4">🔐 Login</h2>
+          <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+              {{ form.username.label(class="form-label") }}
+              {{ form.username(class="form-control", placeholder="Enter your username") }}
+              {% for error in form.username.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="mb-3">
+              {{ form.password.label(class="form-label") }}
+              {{ form.password(class="form-control", placeholder="Enter your password") }}
+              {% for error in form.password.errors %}
+                <div class="text-danger small">{{ error }}</div>
+              {% endfor %}
+            </div>
+
+            <div class="d-grid">
+              {{ form.submit(class="btn btn-primary btn-lg") }}
+            </div>
+          </form>
+
+          <div class="mt-3 text-center">
+            <a href="{{ url_for('main.register') }}">Don't have an account? Sign up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
